@@ -67,7 +67,6 @@ public class NavBaseActivity extends ActionBarActivity {
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
         navDrawers = new ArrayList<NavDrawer>();
 
-       Toast.makeText(this,"NAVMENUTITLES: " + navMenuTitles.length, Toast.LENGTH_SHORT).show();
         // adding nav drawer item
             for (int i = 0; i < navMenuTitles.length; i++) {
                 navDrawers.add(new NavDrawer(navMenuTitles[i]));
@@ -134,10 +133,8 @@ public class NavBaseActivity extends ActionBarActivity {
         }*/
 
         if (mDrawerLayout.isDrawerOpen(mDrawerList)) {
-            Toast.makeText(this, "OPEN", Toast.LENGTH_SHORT).show();
             mDrawerLayout.closeDrawer(mDrawerList);
         } else {
-            Toast.makeText(this, "CLOSE", Toast.LENGTH_SHORT).show();
             mDrawerLayout.openDrawer(mDrawerList);
         }
         return super.onOptionsItemSelected(item);
@@ -155,36 +152,21 @@ public class NavBaseActivity extends ActionBarActivity {
      */
     private void displayView(int position) {
         switch (position) {
-            /*case 0:
-                Intent intent = new Intent(this, MainActivity.class);
+            case 0:
+                Intent intent = new Intent(this, MapsActivity.class);
                 startActivity(intent);
                 finish();
                 break;
             case 1:
-                Intent intent1 = new Intent(this, MapsActivity.class);
+                Intent intent1 = new Intent(this, FavoritesActivity.class);
                 startActivity(intent1);
                 finish();
                 break;
             case 2:
-                Intent intent2 = new Intent(this, EvernoteActivity.class);
+                Intent intent2 = new Intent(this, SuggestionsActivity.class);
                 startActivity(intent2);
                 finish();
                 break;
-            case 3:
-                Intent intent3 = new Intent (this, RecipeDBLayout.class);
-                startActivity(intent3);
-                finish();
-                break;
-            case 4:
-                Intent intent4 = new Intent (this, ShoppingListLayout.class);
-                startActivity(intent4);
-                finish();
-                break;
-            case 5:
-                Intent intent5 = new Intent (this, FridgeLayout.class);
-                startActivity(intent5);
-                finish();
-                break;*/
             default:
                 break;
         }

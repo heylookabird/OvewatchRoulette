@@ -12,7 +12,7 @@
         <item>Volskaya Industries</item>
         <item>Dorado</item>
         <item>Route 66</item>
-        <item>Watchpoint: Gibraltar</item>
+        <item>Gibraltar</item>
         <item>Hollywood</item>
         <item>King\'s Row</item>
         <item>Numbani</item>
@@ -21,10 +21,19 @@
         <item>Nepal</item>
     </array>
 
+    <array name="team_names">
+        <item>Attacking</item>
+        <item>Defending</item>
+        <item>Both</item>
+        <item>Back To Maps</item>
+    </array>
+
     <array name="nav_drawer_items">
         <item>Maps</item>
         <item>Favorites</item>
         <item>Suggestions</item>
     </array>
     <string name="title_activity_favorites">FavoritesActivity</string>
+    <string name="title_activity_strat_roulette">StratRouletteActivity</string>
+    <string name="title_activity_suggestions">SuggestionsActivity</string>
 </resources>

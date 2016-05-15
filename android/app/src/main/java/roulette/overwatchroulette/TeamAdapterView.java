@@ -1,26 +1,27 @@
 package roulette.overwatchroulette;
 
 import android.content.Context;
-import android.graphics.Point;
 import android.graphics.Typeface;
-import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.view.ViewGroup.LayoutParams;
 
 /**
  * Created by Harjit on 5/14/2016.
  */
-public class MapsListAdapter extends ArrayAdapter<String> {
+public class TeamAdapterView extends ArrayAdapter<String> {
 
-    public MapsListAdapter(Context context){
-        super(context,R.layout.map_row, context.getResources().getStringArray(R.array.map_names));
+    int resource = 0;
+    public TeamAdapterView(Context context, int imageResource){
+        super(context,R.layout.team_row, context.getResources().getStringArray(R.array.team_names));
+        resource = imageResource;
+    }
+
+    public String getTeam(int position){
+        return getItem(position);
     }
 
     @Override
@@ -28,11 +29,13 @@ public class MapsListAdapter extends ArrayAdapter<String> {
     {
         LayoutInflater theInflater = LayoutInflater.from(getContext());
 
-        View theView = theInflater.inflate(R.layout.map_row, parent, false);
+        View theView = theInflater.inflate(R.layout.team_row, parent, false);
 
         String results = getItem(position);
+        /*RelativeLayout layout = (RelativeLayout) theView.findViewById(R.id.background);
+        layout.setBackgroundResource(MapDrawables.getDrawable(results));*/
         ImageView img = (ImageView)  theView.findViewById(R.id.imageView);
-        img.setBackgroundResource(MapInformation.getDrawable(results));
+        img.setBackgroundResource(resource);
 
         Typeface font = Typeface.createFromAsset(getContext().getAssets(), "fonts/Linux_Libertine.ttf");
         TextView theTextView = (TextView) theView.findViewById(R.id.name);

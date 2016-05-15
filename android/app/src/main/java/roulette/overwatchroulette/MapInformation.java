@@ -9,19 +9,23 @@ import java.util.HashMap;
 /**
  * Created by Harjit on 5/14/2016.
  */
-public class MapDrawables {
+public class MapInformation {
 
     public static HashMap<String, Integer> drawables = new HashMap<String, Integer>();
 
-    public static void init(Context context){
-        Toast.makeText(context, "INIT", Toast.LENGTH_LONG).show();
+    public enum MAP_STATE{
+        MAP_SELECTION,
+        TEAM_SELECTION,
+        STRAT_SELECTION;
+    }
 
+    public static void init(Context context){
         drawables.put("Hanamura", R.drawable.hanamura);
         drawables.put("Temple of Anubis", R.drawable.anubis);
         drawables.put("Volskaya Industries", R.drawable.volskaya);
         drawables.put("Dorado", R.drawable.dorado);
         drawables.put("Route 66", R.drawable.route66);
-        drawables.put("Watchpoint: Gibraltar", R.drawable.gibraltar);
+        drawables.put("Gibraltar", R.drawable.gibraltar);
         drawables.put("Hollywood", R.drawable.hollywood);
         drawables.put("King's Row", R.drawable.kings);
         drawables.put("Numbani", R.drawable.numbani);
