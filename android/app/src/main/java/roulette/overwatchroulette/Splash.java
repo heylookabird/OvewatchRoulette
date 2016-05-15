@@ -1,5 +1,6 @@
 package roulette.overwatchroulette;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -26,6 +27,10 @@ public class Splash extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+        MapDrawables.init(this);
+        Intent i = new Intent(getApplicationContext(), MapsActivity.class);
+        startActivity(i);
+
     }
 
     @Override
