@@ -1,0 +1,37 @@
+# Built application files
+/*/build/
+
+# Crashlytics configuations
+com_crashlytics_export_strings.xml
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+# Gradle generated files
+.gradle/
+
+# Signing files
+android/.signing/
+
+# User-specific configurations
+android/.idea/libraries/
+android/.idea/workspace.xml
+android/.idea/tasks.xml
+android/.idea/.name
+android/.idea/compiler.xml
+android/.idea/copyright/profiles_settings.xml
+android/.idea/encodings.xml
+android/.idea/misc.xml
+android/.idea/modules.xml
+android/.idea/scopes/scope_settings.xml
+android/.idea/vcs.xml
+*.iml
+
+# OS-specific files
+android/.DS_Store
+android/.DS_Store?
+android/._*
+android/.Spotlight-V100
+android/.Trashes
+android/ehthumbs.db
+android/Thumbs.db
