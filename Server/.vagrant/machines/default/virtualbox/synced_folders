@@ -1,0 +1,1 @@
+{"nfs":{"/vagrant":{"type":"nfs","mount_options":["rw","vers=3","tcp","fsc"],"guestpath":"/vagrant","hostpath":"/Users/josephauby/Documents/Github/OverwatchRoulette/Server","disabled":false,"__vagrantfile":true,"map_uid":501,"map_gid":20,"nfs_udp":true,"nfs_version":3,"uuid":"3185219610"}}}
