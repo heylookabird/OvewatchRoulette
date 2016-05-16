@@ -1,4 +1,4 @@
-package roulette.overwatchroulette;
+package roulette.overwatchroulette.navigation;
 
 /**
  * Created by Harjit on 5/14/2016.
@@ -7,13 +7,16 @@ package roulette.overwatchroulette;
 import java.util.ArrayList;
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import roulette.overwatchroulette.R;
+import roulette.overwatchroulette.navigation.NavDrawer;
 
 /**
  * This adapter provides access to the data items.
@@ -61,11 +64,10 @@ public class NavDrawerAdapter extends BaseAdapter {
             convertView = mInflater.inflate(R.layout.drawer_list_item, null);
         }
 
-        ImageView imgIcon = (ImageView) convertView.findViewById(R.id.icon);
         TextView txtTitle = (TextView) convertView.findViewById(R.id.title);
-
+        Typeface font = Typeface.createFromAsset(context.getAssets(), "fonts/Linux_Libertine.ttf");
+        txtTitle.setTypeface(font);
         //settings icons and title
-        imgIcon.setImageResource(navDrawers.get(position).getIcon());
         txtTitle.setText(navDrawers.get(position).getTitle());
 
         return convertView;

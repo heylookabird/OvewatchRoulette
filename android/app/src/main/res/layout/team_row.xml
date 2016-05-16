@@ -4,7 +4,8 @@
 
     android:layout_width="match_parent"
     android:layout_height="150dp"
-    android:id="@+id/background">
+    android:id="@+id/background"
+    android:background="@color/blizzardBlue">
 
     <ImageView
         android:layout_width="match_parent"
@@ -21,7 +22,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textStyle="bold"
         android:textSize="40dp"
-        android:text="Large Text"
+        android:text="Go To Maps"
         android:textColor="#ffffff"
         android:id="@+id/name"
         android:layout_alignBottom="@+id/imageView"

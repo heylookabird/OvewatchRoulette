@@ -1,22 +1,30 @@
-package roulette.overwatchroulette;
+package roulette.overwatchroulette.navigation;
 
 import java.util.ArrayList;
 
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.content.res.TypedArray;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.text.SpannableString;
+import android.text.Spanned;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
-import android.widget.Toast;
+import android.widget.TextView;
+
+import roulette.overwatchroulette.TypefaceSpan;
+import roulette.overwatchroulette.favorites.FavoritesActivity;
+import roulette.overwatchroulette.R;
+import roulette.overwatchroulette.suggestions.SuggestionsActivity;
+import roulette.overwatchroulette.maps.MapsActivity;
 
 
 /**
@@ -80,9 +88,15 @@ public class NavBaseActivity extends ActionBarActivity {
         mDrawerList.setAdapter(adapter);
 
         // turning on app icon in action bar
+        SpannableString s = new SpannableString(mTitle);
+        s.setSpan(new TypefaceSpan(this, "Linux_Libertine.ttf"), 0 , s.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        getSupportActionBar().setTitle(s);
             getSupportActionBar().setHomeButtonEnabled(true);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setHomeAsUpIndicator(R.drawable.menu_icon);
+            getSupportActionBar().setHomeAsUpIndicator(R.drawable.logo2);
+        ColorDrawable drawable = new ColorDrawable(getApplicationContext().getResources().getColor(R.color.blizzardBlue));
+        getSupportActionBar().setBackgroundDrawable(drawable);
+
 
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
                 R.drawable.menu_icon, // nav menu toggle icon
@@ -90,11 +104,11 @@ public class NavBaseActivity extends ActionBarActivity {
                 R.string.drawer_close // require string parameter
         ) {
             public void onDrawerClosed(View view) {
-                getSupportActionBar().setTitle(mTitle);
+                setTitle(mTitle);
                 supportInvalidateOptionsMenu();
             }
             public void onDrawerOpened(View drawerView) {
-                getSupportActionBar().setTitle(mDrawerTitle);
+                setTitle("Select A Map");
                 supportInvalidateOptionsMenu();
             }
         };
@@ -134,8 +148,10 @@ public class NavBaseActivity extends ActionBarActivity {
 
         if (mDrawerLayout.isDrawerOpen(mDrawerList)) {
             mDrawerLayout.closeDrawer(mDrawerList);
+            setTitle(mTitle);
         } else {
             mDrawerLayout.openDrawer(mDrawerList);
+            setTitle("Select A Map");
         }
         return super.onOptionsItemSelected(item);
     }
@@ -151,24 +167,21 @@ public class NavBaseActivity extends ActionBarActivity {
      * @param position Position of menu title to access
      */
     private void displayView(int position) {
-        switch (position) {
-            case 0:
-                Intent intent = new Intent(this, MapsActivity.class);
-                startActivity(intent);
-                finish();
-                break;
-            case 1:
-                Intent intent1 = new Intent(this, FavoritesActivity.class);
-                startActivity(intent1);
-                finish();
-                break;
-            case 2:
-                Intent intent2 = new Intent(this, SuggestionsActivity.class);
-                startActivity(intent2);
-                finish();
-                break;
-            default:
-                break;
+        if(position <= 11){
+            Bundle bundle = new Bundle();
+            bundle.putString("map", navDrawers.get(position).getTitle());
+            Intent intent = new Intent(this, MapsActivity.class);
+            intent.putExtras(bundle);
+            startActivity(intent);
+            finish();
+        }else if(position == 12){
+            Intent intent1 = new Intent(this, FavoritesActivity.class);
+            startActivity(intent1);
+            finish();
+        }else if(position==13){
+            Intent intent2 = new Intent(this, SuggestionsActivity.class);
+            startActivity(intent2);
+            finish();
         }
 
         // update selected menu title and close nav drawer
@@ -179,8 +192,9 @@ public class NavBaseActivity extends ActionBarActivity {
 
     @Override
     public void setTitle(CharSequence title) {
-        mTitle = title;
-        getActionBar().setTitle(mTitle);
+        SpannableString s = new SpannableString(title);
+        s.setSpan(new TypefaceSpan(this,"Linux_Libertine.ttf"), 0, s.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        getSupportActionBar().setTitle(s);
     }
 
     @Override

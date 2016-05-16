@@ -1,4 +1,4 @@
-package roulette.overwatchroulette;
+package roulette.overwatchroulette.maps;
 
 import android.content.Context;
 import android.graphics.Typeface;
@@ -9,14 +9,16 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import roulette.overwatchroulette.R;
+
 /**
  * Created by Harjit on 5/14/2016.
  */
 public class TeamAdapterView extends ArrayAdapter<String> {
 
-    int resource = 0;
-    public TeamAdapterView(Context context, int imageResource){
-        super(context,R.layout.team_row, context.getResources().getStringArray(R.array.team_names));
+    String resource = "";
+    public TeamAdapterView(Context context, String imageResource){
+        super(context, R.layout.team_row, context.getResources().getStringArray(R.array.team_names));
         resource = imageResource;
     }
 
@@ -35,10 +37,17 @@ public class TeamAdapterView extends ArrayAdapter<String> {
         /*RelativeLayout layout = (RelativeLayout) theView.findViewById(R.id.background);
         layout.setBackgroundResource(MapDrawables.getDrawable(results));*/
         ImageView img = (ImageView)  theView.findViewById(R.id.imageView);
-        img.setBackgroundResource(resource);
+        if(results.equals("Back To Maps")){
+            img.setBackgroundResource(R.drawable.logo1);
+            //img.setBackgroundColor(getContext().getResources().getColor(R.color.blizzardBlue));
+            //img.setBackgroundColor(getContext().getResources().getColor(R.color.blizzardBlue));
+        }else
+            img.setBackgroundResource(MapInformation.getDrawable(resource+"_"+results));
+
 
         Typeface font = Typeface.createFromAsset(getContext().getAssets(), "fonts/Linux_Libertine.ttf");
         TextView theTextView = (TextView) theView.findViewById(R.id.name);
+        theTextView.setTextSize(40);
         theTextView.setTypeface(font);
         theTextView.setText(results);
 
