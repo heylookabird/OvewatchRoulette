@@ -1,4 +1,4 @@
-package roulette.overwatchroulette;
+package roulette.overwatchroulette.maps;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,15 +7,20 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import roulette.overwatchroulette.navigation.NavBaseActivity;
+import roulette.overwatchroulette.R;
+import roulette.overwatchroulette.roulette.StratRouletteActivity;
+
 public class MapsActivity extends NavBaseActivity {
     ArrayAdapter<String> adapter;
     MapInformation.MAP_STATE state;
     String mapSelected;
+    ListView listView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
-        final ListView listView = (ListView) findViewById(R.id.listView);
+        listView = (ListView) findViewById(R.id.listView);
         adapter = new MapsListAdapter(this);
         listView.setAdapter(adapter);
         state = MapInformation.MAP_STATE.MAP_SELECTION;
@@ -46,6 +51,15 @@ public class MapsActivity extends NavBaseActivity {
             }
         });
         activateNavBar();
+    }
+
+    @Override
+    public void onBackPressed(){
+        if(state == MapInformation.MAP_STATE.TEAM_SELECTION){
+            adapter = new MapsListAdapter(getApplicationContext());
+            listView.setAdapter(adapter);
+            state = MapInformation.MAP_STATE.MAP_SELECTION;
+        }
     }
 
 }

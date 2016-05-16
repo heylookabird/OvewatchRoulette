@@ -1,4 +1,4 @@
-package roulette.overwatchroulette;
+package roulette.overwatchroulette.maps;
 
 import android.content.Context;
 import android.graphics.Typeface;
@@ -9,6 +9,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import roulette.overwatchroulette.R;
+
 /**
  * Created by Harjit on 5/14/2016.
  */
@@ -16,7 +18,7 @@ public class TeamAdapterView extends ArrayAdapter<String> {
 
     int resource = 0;
     public TeamAdapterView(Context context, int imageResource){
-        super(context,R.layout.team_row, context.getResources().getStringArray(R.array.team_names));
+        super(context, R.layout.team_row, context.getResources().getStringArray(R.array.team_names));
         resource = imageResource;
     }
 

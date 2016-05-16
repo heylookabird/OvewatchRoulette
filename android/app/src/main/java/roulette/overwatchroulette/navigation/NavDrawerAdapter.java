@@ -1,4 +1,4 @@
-package roulette.overwatchroulette;
+package roulette.overwatchroulette.navigation;
 
 /**
  * Created by Harjit on 5/14/2016.
@@ -13,7 +13,9 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import roulette.overwatchroulette.R;
+import roulette.overwatchroulette.navigation.NavDrawer;
 
 /**
  * This adapter provides access to the data items.

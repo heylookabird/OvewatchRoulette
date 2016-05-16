@@ -8,6 +8,6 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_strat_roulette"
-    tools:context="roulette.overwatchroulette.StratRouletteActivity">
+    tools:context="roulette.overwatchroulette.roulette.StratRouletteActivity">
 
 </RelativeLayout>

@@ -1,10 +1,9 @@
-package roulette.overwatchroulette;
+package roulette.overwatchroulette.navigation;
 
 import java.util.ArrayList;
 
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -15,8 +14,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
-import android.widget.Toast;
+
+import roulette.overwatchroulette.favorites.FavoritesActivity;
+import roulette.overwatchroulette.R;
+import roulette.overwatchroulette.suggestions.SuggestionsActivity;
+import roulette.overwatchroulette.maps.MapsActivity;
 
 
 /**

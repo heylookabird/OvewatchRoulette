@@ -1,4 +1,4 @@
-package roulette.overwatchroulette;
+package roulette.overwatchroulette.navigation;
 
 /**
  * Created by Harjit on 5/14/2016.
