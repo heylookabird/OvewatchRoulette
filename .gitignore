@@ -31,3 +31,5 @@ android/Thumbs.db
 
 
 Server/strat
+Server/.idea
+*.pyc

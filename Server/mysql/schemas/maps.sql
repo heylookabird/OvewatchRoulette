@@ -6,7 +6,7 @@ VALUES
 
 ("Dorado", "Escort"),
 ("Route 66", "Escort"),
-("Watchpoint: Gibraltar", "Escort"),
+("Gibraltar", "Escort"),
 
 ("Hollywood", "Hybrid"),
 ("King's Row", "Hybrid"),
