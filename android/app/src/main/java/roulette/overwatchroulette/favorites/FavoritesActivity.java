@@ -40,24 +40,34 @@ public class FavoritesActivity extends NavBaseActivity {
         adapter = new MapsListAdapter(this);
         listView.setAdapter(adapter);
         state = MapInformation.MAP_STATE.MAP_SELECTION;
+
+        if(getIntent().getExtras() != null){
+            mapSelected = getIntent().getExtras().getString("map");
+            teamSelected = getIntent().getExtras().getString("team");
+            Cursor c = FavoritesActivity.db.getStrats(mapSelected, teamSelected);
+            setUpList(c);
+            state = MapInformation.MAP_STATE.STRAT_SELECTION;
+        }
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if (state == MapInformation.MAP_STATE.MAP_SELECTION) {
                     mapSelected = adapter.getItem(position);
-                    adapter = new TeamAdapterView(view.getContext(), MapInformation.getDrawable(mapSelected));
+                    adapter = new TeamAdapterView(getApplicationContext(), mapSelected);
                     listView.setAdapter(adapter);
+                    setTitle("Favorites: Select A Team");
                     state = MapInformation.MAP_STATE.TEAM_SELECTION;
                 } else if (state == MapInformation.MAP_STATE.TEAM_SELECTION) {
                     if (position < 3) {
                         teamSelected = adapter.getItem(position);
                         Cursor c = FavoritesActivity.db.getStrats(mapSelected, teamSelected);
-                        //Cursor c = FavoritesActivity.db.getAllRows();
                         setUpList(c);
+                        setTitle("Your Favorite Strats");
                         state = MapInformation.MAP_STATE.STRAT_SELECTION;
                     } else {
                         adapter = new MapsListAdapter(getApplicationContext());
                         listView.setAdapter(adapter);
+                        setTitle("Favorites: Select A Map");
                         state = MapInformation.MAP_STATE.MAP_SELECTION;
                     }
                 }else if (state == MapInformation.MAP_STATE.STRAT_SELECTION){
@@ -69,8 +79,9 @@ public class FavoritesActivity extends NavBaseActivity {
                         bundle.putString("description", adapter.getItem(position));
                         i.putExtras(bundle);
                         startActivity(i);
+                        finish();
                     }else{
-                        adapter = new TeamAdapterView(getApplicationContext(), MapInformation.getDrawable(mapSelected));
+                        adapter = new TeamAdapterView(getApplicationContext(), mapSelected);
                         listView.setAdapter(adapter);
                         state = MapInformation.MAP_STATE.TEAM_SELECTION;
                     }
@@ -78,13 +89,14 @@ public class FavoritesActivity extends NavBaseActivity {
             }
         });
         activateNavBar();
+        setTitle("Favorites: Select A Map");
+
     }
 
     public void setUpList(Cursor c){
         ArrayList<String> list = new ArrayList<String>();
-        Toast.makeText(this, "NUMBER OF RESULTS " + c.getCount(),Toast.LENGTH_LONG).show();
         while(!c.isAfterLast()){
-            list.add(c.getString(c.getColumnIndex(FavoritesDB.KEY_DESCRIPTION)));
+            list.add(c.getString(c.getColumnIndex(FavoritesDB.KEY_TITLE)));
             c.moveToNext();
         }
         list.add("Go Back");
@@ -96,18 +108,13 @@ public class FavoritesActivity extends NavBaseActivity {
         Cursor c = FavoritesActivity.db.getAllRows();
         String team = "Both";
         String strat = "Throw flash bangs";
+        String title = "FLASHES EVERYWHERE";
         if(c.getCount() < 1){
             String[] maps= getResources().getStringArray(R.array.map_names);
             for(int i = 0; i < maps.length; i++){
-                FavoritesActivity.db.insertRow(i,maps[i], team, strat);
+                FavoritesActivity.db.insertRow(i,maps[i], team, title, strat);
             }
         }
-    }
-
-    @Override
-    public void onDestroy(){
-        FavoritesActivity.db.close();
-        super.onDestroy();
     }
 
     @Override
@@ -115,13 +122,16 @@ public class FavoritesActivity extends NavBaseActivity {
         if(state == MapInformation.MAP_STATE.TEAM_SELECTION){
             adapter = new MapsListAdapter(getApplicationContext());
             listView.setAdapter(adapter);
+            setTitle("Favorites: Select A Map");
             state = MapInformation.MAP_STATE.MAP_SELECTION;
         }else if(state == MapInformation.MAP_STATE.MAP_SELECTION){
             Intent i = new Intent(getApplicationContext(), MapsActivity.class);
             startActivity(i);
+            finish();
         }else if(state == MapInformation.MAP_STATE.STRAT_SELECTION){
-            adapter = new TeamAdapterView(getApplicationContext(), MapInformation.getDrawable(mapSelected));
+            adapter = new TeamAdapterView(getApplicationContext(), mapSelected);
             listView.setAdapter(adapter);
+            setTitle("Favorites: Select A Team");
             state = MapInformation.MAP_STATE.TEAM_SELECTION;
         }
     }

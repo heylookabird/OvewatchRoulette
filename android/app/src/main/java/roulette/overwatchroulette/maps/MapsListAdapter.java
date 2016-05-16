@@ -19,6 +19,8 @@ public class MapsListAdapter extends ArrayAdapter<String> {
 
     public MapsListAdapter(Context context){
         super(context, R.layout.map_row, context.getResources().getStringArray(R.array.map_names));
+
+
     }
 
     @Override

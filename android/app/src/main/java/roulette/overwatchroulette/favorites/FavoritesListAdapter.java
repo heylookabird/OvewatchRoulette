@@ -32,11 +32,13 @@ public class FavoritesListAdapter extends ArrayAdapter<String>{
 
         String results = getItem(position);
         ImageView img = (ImageView)  theView.findViewById(R.id.imageView);
-        img.setBackgroundColor(getContext().getResources().getColor(R.color.blizzardBlue));
-
+        if(position%2==0)
+            img.setBackgroundColor(getContext().getResources().getColor(R.color.blizzardBlue));
+        else
+            img.setBackgroundColor(getContext().getResources().getColor(R.color.blizzardOrange));
         Typeface font = Typeface.createFromAsset(getContext().getAssets(), "fonts/Linux_Libertine.ttf");
         TextView theTextView = (TextView) theView.findViewById(R.id.name);
-        theTextView.setTextSize(20);
+        theTextView.setTextSize(40);
         theTextView.setTypeface(font);
         theTextView.setText(results);
 

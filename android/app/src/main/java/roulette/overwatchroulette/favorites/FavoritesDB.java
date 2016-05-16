@@ -23,8 +23,9 @@ public class FavoritesDB {
     public static final String KEY_MAP = "map_name";//can be a game mode or map name
     public static final String KEY_TEAM = "team_name";
     public static final String KEY_DESCRIPTION = "strat_description";
+    public static final String KEY_TITLE = "strat_title";
 
-    public static final String[] ALL_KEYS = new String[] {KEY_ROWID, KEY_MAP, KEY_TEAM, KEY_DESCRIPTION};
+    public static final String[] ALL_KEYS = new String[] {KEY_ROWID, KEY_MAP, KEY_TEAM, KEY_TITLE, KEY_DESCRIPTION};
 
     // DB info: it's name, and the table we are using (just one).
     public static final String DATABASE_NAME = "OverWatch";
@@ -37,6 +38,7 @@ public class FavoritesDB {
                     + " (" + KEY_ROWID + " integer primary key, "
                     + KEY_MAP + " text, "
                     + KEY_TEAM + " text, "
+                    + KEY_TITLE + " text,"
                     + KEY_DESCRIPTION + " text"
                     + ");";
 
@@ -67,7 +69,7 @@ public class FavoritesDB {
     }
 
 
-    public long insertRow(int id, String map, String team, String description) {
+    public long insertRow(int id, String map, String team, String title, String description) {
         ContentValues initialValues = new ContentValues();
         //map = "'"+map+"'";
         //team = "'"+team+"'";
@@ -75,6 +77,7 @@ public class FavoritesDB {
         initialValues.put(KEY_ROWID, id);
         initialValues.put(KEY_MAP, map);
         initialValues.put(KEY_TEAM, team);
+        initialValues.put(KEY_TITLE, title);
         initialValues.put(KEY_DESCRIPTION, description);
         // Insert it into the database.
         return db.insert(DATABASE_TABLE, null, initialValues);

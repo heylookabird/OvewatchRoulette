@@ -4,4 +4,5 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="blizzardBlue">#0A1C2A</color>
+    <color name="blizzardOrange">#fc3</color>
 </resources>

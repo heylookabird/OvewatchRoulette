@@ -2,14 +2,20 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/blizzardBlue">
 
     <!-- The main content view -->
     <FrameLayout
         android:id="@+id/content_frame"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent"
+        android:background="@color/blizzardBlue">
         <!-- Add content here -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/text"/>
     </FrameLayout>
 
     <!-- The navigation drawer -->
@@ -20,5 +26,5 @@
         android:choiceMode="singleChoice"
         android:divider="@android:color/transparent"
         android:dividerHeight="0dp"
-        android:background="@drawable/background"/>
+        android:background="@color/blizzardBlue"/>
 </android.support.v4.widget.DrawerLayout>

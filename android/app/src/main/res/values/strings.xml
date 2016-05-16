@@ -4,7 +4,7 @@
     <string name="title_activity_nave_base">NaveBaseActivity</string>
     <string name="drawer_open">Open Navigation Drawer</string>
     <string name="drawer_close">Close Navigation Drawer</string>
-    <string name="title_activity_maps">MapsActivity</string>
+    <string name="title_activity_maps">Select A Map</string>
 
     <array name="map_names">
         <item>Hanamura</item>
@@ -29,11 +29,22 @@
     </array>
 
     <array name="nav_drawer_items">
-        <item>Maps</item>
+        <item>Hanamura</item>
+        <item>Temple of Anubis</item>
+        <item>Volskaya Industries</item>
+        <item>Dorado</item>
+        <item>Route 66</item>
+        <item>Gibraltar</item>
+        <item>Hollywood</item>
+        <item>King\'s Row</item>
+        <item>Numbani</item>
+        <item>Ilios</item>
+        <item>Lijiang Tower</item>
+        <item>Nepal</item>
         <item>Favorites</item>
         <item>Suggestions</item>
     </array>
-    <string name="title_activity_favorites">FavoritesActivity</string>
-    <string name="title_activity_strat_roulette">StratRouletteActivity</string>
-    <string name="title_activity_suggestions">SuggestionsActivity</string>
+    <string name="title_activity_favorites">Favorites</string>
+    <string name="title_activity_strat_roulette">StratRoulette</string>
+    <string name="title_activity_suggestions">Suggestions</string>
 </resources>
