@@ -24,6 +24,6 @@
         android:text="Large Text"
         android:textColor="#ffffff"
         android:id="@+id/name"
-        android:layout_alignBottom="@+id/imageView"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"/>
 </RelativeLayout>

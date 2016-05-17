@@ -21,28 +21,20 @@ public class MapsActivity extends NavBaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
         listView = (ListView) findViewById(R.id.listView);
-        adapter = new MapsListAdapter(this);
-        listView.setAdapter(adapter);
-        state = MapInformation.MAP_STATE.MAP_SELECTION;
+        goToMapSelection();
 
         if(getIntent().getExtras() != null){
             mapSelected = getIntent().getExtras().getString("map");
-            adapter = new TeamAdapterView(getApplicationContext(), mapSelected);
-            listView.setAdapter(adapter);
-            setTitle("Select A Team");
-            state = MapInformation.MAP_STATE.TEAM_SELECTION;
+            goToTeamSelection();
         }
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if (state == MapInformation.MAP_STATE.MAP_SELECTION) {
                     mapSelected = adapter.getItem(position);
-                    adapter = new TeamAdapterView(getApplicationContext(), mapSelected);
-                    listView.setAdapter(adapter);
-                    setTitle("Select A Team");
-                    state = MapInformation.MAP_STATE.TEAM_SELECTION;
+                    goToTeamSelection();
                 } else if (state == MapInformation.MAP_STATE.TEAM_SELECTION) {
-                    if (position < 3) {
+                    if (position < adapter.getCount()-1) {
                         String teamSelection = adapter.getItem(position);
                         Bundle bundle = new Bundle();
                         bundle.putString("map", mapSelected);
@@ -52,10 +44,7 @@ public class MapsActivity extends NavBaseActivity {
                         startActivity(i);
                         //finish();
                     } else {
-                        adapter = new MapsListAdapter(getApplicationContext());
-                        listView.setAdapter(adapter);
-                        setTitle("Select A Map");
-                        state = MapInformation.MAP_STATE.MAP_SELECTION;
+                        goToMapSelection();
                     }
                 }
             }
@@ -67,13 +56,23 @@ public class MapsActivity extends NavBaseActivity {
             setTitle("Select A Team");
     }
 
+    void goToMapSelection(){
+        adapter = new MapsListAdapter(getApplicationContext());
+        listView.setAdapter(adapter);
+        setTitle("Select A Map");
+        state = MapInformation.MAP_STATE.MAP_SELECTION;
+    }
+
+    void goToTeamSelection(){
+        adapter = new TeamAdapterView(getApplicationContext(), mapSelected);
+        listView.setAdapter(adapter);
+        setTitle("Select A Team");
+        state = MapInformation.MAP_STATE.TEAM_SELECTION;
+    }
     @Override
     public void onBackPressed(){
         if(state == MapInformation.MAP_STATE.TEAM_SELECTION){
-            adapter = new MapsListAdapter(getApplicationContext());
-            listView.setAdapter(adapter);
-            setTitle("Select A Map");
-            state = MapInformation.MAP_STATE.MAP_SELECTION;
+            goToMapSelection();
         }
     }
 

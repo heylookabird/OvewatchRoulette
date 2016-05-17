@@ -29,14 +29,15 @@
                 android:id="@+id/reroll"
                 android:layout_below="@id/strat"
                 android:layout_alignParentLeft="true"
-                android:text="Re-Roll Strat"/>
+                android:text="Re-Roll Strat"
+                android:onClick="reRoll"/>
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/favorite"
                 android:layout_below="@id/strat"
                 android:layout_alignParentRight="true"
-                android:text="Add To Favorites" />
+                android:text="Add To Favorites"/>
 
 
         </RelativeLayout>

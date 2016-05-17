@@ -24,11 +24,12 @@
     <array name="team_names">
         <item>Attacking</item>
         <item>Defending</item>
-        <item>Both</item>
         <item>Back To Maps</item>
     </array>
 
     <array name="nav_drawer_items">
+        <item>Favorites</item>
+        <item>Suggestions</item>
         <item>Hanamura</item>
         <item>Temple of Anubis</item>
         <item>Volskaya Industries</item>
@@ -41,8 +42,6 @@
         <item>Ilios</item>
         <item>Lijiang Tower</item>
         <item>Nepal</item>
-        <item>Favorites</item>
-        <item>Suggestions</item>
     </array>
     <string name="title_activity_favorites">Favorites</string>
     <string name="title_activity_strat_roulette">StratRoulette</string>

@@ -167,18 +167,18 @@ public class NavBaseActivity extends ActionBarActivity {
      * @param position Position of menu title to access
      */
     private void displayView(int position) {
-        if(position <= 11){
+        if(position > 1){
             Bundle bundle = new Bundle();
             bundle.putString("map", navDrawers.get(position).getTitle());
             Intent intent = new Intent(this, MapsActivity.class);
             intent.putExtras(bundle);
             startActivity(intent);
             finish();
-        }else if(position == 12){
+        }else if(position == 0){
             Intent intent1 = new Intent(this, FavoritesActivity.class);
             startActivity(intent1);
             finish();
-        }else if(position==13){
+        }else if(position==1){
             Intent intent2 = new Intent(this, SuggestionsActivity.class);
             startActivity(intent2);
             finish();
@@ -192,6 +192,7 @@ public class NavBaseActivity extends ActionBarActivity {
 
     @Override
     public void setTitle(CharSequence title) {
+        title = "\t\t"+title;
         SpannableString s = new SpannableString(title);
         s.setSpan(new TypefaceSpan(this,"Linux_Libertine.ttf"), 0, s.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         getSupportActionBar().setTitle(s);

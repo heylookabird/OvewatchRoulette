@@ -18,6 +18,7 @@ public class Splash extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
 
         MapInformation.init(this);
+        DBManager.init(this);
 
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
