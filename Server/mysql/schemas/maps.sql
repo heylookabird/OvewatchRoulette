@@ -1,5 +1,11 @@
 INSERT INTO StratRoulette.Maps (name, map_type)
 VALUES
+
+("All", "All"),
+("Assault", "Assault"),
+("Escort", "Escort"),
+("Control", "Control"),
+
 ("Hanamura", "Assault"),
 ("Temple of Anubis", "Assault"),
 ("Volskaya Industries", "Assault"),
@@ -13,6 +19,6 @@ VALUES
 ("Numbani", "Hybrid"),
 
 ("Ilios", "Control"),
-("Lijang Tower", "Control"),
+("Lijiang Tower", "Control"),
 ("Nepal", "Control");
 

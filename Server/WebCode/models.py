@@ -1,8 +1,7 @@
-
 #map = Maps(name=<name>, map_type=<map_type>)
 #session.add(map)
 #session.commit()
-from Main import db
+from application import db
 
 class Maps(db.Model):
 	__tablename__ = 'Maps'
@@ -15,10 +14,11 @@ class Maps(db.Model):
 
 
 class Strats(db.Model):
+
 	__tablename__ = 'Strats'
 	id = db.Column('id', db.Integer, primary_key=True)
 	name = db.Column('name', db.Unicode)
-	map_id = db.Column('map_id', db.Unicode)
+	map_id = db.Column('map_id', db.Integer)
 	description = db.Column('description', db.Unicode)
 	team = db.Column('team', db.Integer)
 
@@ -28,4 +28,3 @@ def get_maps():
 		map_list.append(row.as_dict())
 
 	return map_list
-

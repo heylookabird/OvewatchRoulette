@@ -1,3 +1,3 @@
-from Main import app as application
+from application import api as application
 import models
 
