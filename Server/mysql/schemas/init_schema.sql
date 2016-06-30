@@ -6,7 +6,6 @@ CREATE TABLE StratRoulette.Maps(
 	id INT NOT NULL AUTO_INCREMENT,
 	name VARCHAR(32) NOT NULL,
 	map_type VARCHAR(16) NOT NULL,
-
 	PRIMARY KEY (id),
 	UNIQUE(name)
 );
