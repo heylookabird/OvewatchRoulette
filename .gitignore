@@ -33,3 +33,8 @@ android/Thumbs.db
 Server/strat
 Server/.idea
 *.pyc
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml

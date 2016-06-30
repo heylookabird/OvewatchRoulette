@@ -3,24 +3,25 @@ from flask_sqlalchemy import SQLAlchemy
 import models
 import json
 
-app = api = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://dbmaster:Pa$$w0rd@overwatchroulette.cdlwhilaiijd.us-west-1.rds.amazonaws.com:3306/StratRoulette'
-db = SQLAlchemy(app)
+application = api = Flask(__name__)
+#application.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:pass@127.0.0.1:3306/StratRoulette'
+application.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://dbmaster:Pa$$w0rd@overwatchroulette.cdlwhilaiijd.us-west-1.rds.amazonaws.com:3306/StratRoulette'
+db = SQLAlchemy(application)
 
 
 
-@app.route('/')
+@application.route('/')
 def landing():
 	# Set the path to the database and make the connection
 	# Found the account!
 	map_dict = json.dumps(models.get_maps())
 
 	return render_template('hello.html', header="Welcome to Overwatch StratRoulette!", map_list=map_dict)
-@app.route('/map/<map_name>')
+@application.route('/map/<map_name>')
 def map_page():
 
 	return render_template('')
-@app.route('/suggestions')
+@application.route('/suggestions')
 def suggestions():
 	map = request.args.get('map')
 	team = request.args.get('team')
@@ -28,12 +29,12 @@ def suggestions():
 
 	return map
 
-@app.route('/get_strats')
+@application.route('/get_strats')
 def activate_account(map_name):
 
 	return json.dumps(models.get_maps())
 
 
 if __name__ == '__main__':
-	app.debug = True
-	app.run()
+	application.debug = True
+	application.run()
